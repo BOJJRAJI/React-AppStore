@@ -1,0 +1,59 @@
+.app-container {
+  min-height: 100vh;
+  background-image: linear-gradient(#fff1eb, #ace0f9);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.card {
+  width: 80%;
+}
+.app-heading {
+  font-family: 'Bree Serif';
+  font-size: 35px;
+  color: #1e293b;
+  font-weight: bold;
+  text-align: center;
+}
+.input-container {
+  background-color: transparent;
+  border: 1px solid #7b8794;
+  border-radius: 7px;
+  padding: 5px;
+  width: 30%;
+  margin: auto;
+}
+.input-element {
+  border: none;
+  color: #7b8794;
+  background-color: transparent;
+  height: 100%;
+  font-family: 'Bree Serif';
+  font-size: 15px;
+  width: 90%;
+}
+.search-icon {
+  height: 20px;
+  width: 20px;
+  padding-top: 10px;
+  width: 10%;
+}
+.tabs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25%;
+
+  margin: auto;
+  margin-top: 10px;
+  padding-left: 0px;
+}
+.app-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 100px;
+  align-self: center;
+}

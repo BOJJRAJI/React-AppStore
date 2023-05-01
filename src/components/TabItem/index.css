@@ -1,0 +1,18 @@
+.tab {
+  list-style-type: none;
+}
+
+.button {
+  color: #7b8794;
+  font-size: 15px;
+  font-family: 'Bree Serif';
+  font-weight: 800;
+  box-shadow: 0px 2px 0px 0px #dfe2e5;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.active-tab {
+  box-shadow: 0px 2px 0px 0px #2563eb;
+  color: #2563eb;
+}
