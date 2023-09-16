@@ -293,62 +293,53 @@ const appsList = [
 ]
 
 class AppStore extends Component {
-  state = {
-    activeTabId: tabsList[0].tabId,
-    searchInput: '',
-    initialAppLists: appsList,
+  state = {activeTab: tabsList[0].tabId, searchInput: ''}
+
+  onChangeTab = id => {
+    this.setState({activeTab: id})
   }
 
-  getSearchInput = event => {
-    const {initialAppLists} = this.state
-    const search = event.target.value
-    const searchedApps = initialAppLists.filter(app =>
-      app.appName.toLowerCase().includes(search.toLowerCase()),
-    )
-
-    this.setState({initialAppLists: searchedApps, searchInput: ''})
-  }
-
-  getActiveTabId = id => {
-    this.setState({activeTabId: id})
+  onChangeSearchInput = e => {
+    this.setState({searchInput: e.target.value})
   }
 
   render() {
-    const {activeTabId, initialAppLists} = this.state
-    const filteredApps = initialAppLists.filter(
-      app => app.category === activeTabId,
+    const {activeTab, searchInput} = this.state
+    const filterAppsList = appsList.filter(item => item.category === activeTab)
+    const searchedApps = filterAppsList.filter(item =>
+      item.appName.toLowerCase().includes(searchInput.toLowerCase()),
     )
-
     return (
-      <div className="app-container">
+      <div className="bg-container">
         <div className="card">
-          <h1 className="app-heading">App Store</h1>
-          <div className="input-container">
+          <h1 className="heading">App Store</h1>
+          <div className="search-container">
             <input
-              type="search"
+              onChange={this.onChangeSearchInput}
               className="input-element"
               placeholder="Search"
-              onChange={this.getSearchInput}
+              type="search"
+              value={searchInput}
             />
             <img
-              alt="search icon"
               src="https://assets.ccbp.in/frontend/react-js/app-store/app-store-search-img.png"
+              alt="search icon"
               className="search-icon"
             />
           </div>
           <ul className="tabs-container">
-            {tabsList.map(tab => (
+            {tabsList.map(item => (
               <TabItem
-                tabDetails={tab}
-                key={tab.tabId}
-                getActiveTabId={this.getActiveTabId}
-                isActive={tab.tabId === activeTabId}
+                tabDetails={item}
+                changeTab={this.onChangeTab}
+                key={item.tabId}
+                isActive={item.tabId === activeTab}
               />
             ))}
           </ul>
-          <ul className="app-list">
-            {filteredApps.map(app => (
-              <AppItem appDetails={app} key={app.appId} />
+          <ul className="apps-container">
+            {searchedApps.map(item => (
+              <AppItem itemDetails={item} key={item.appId} />
             ))}
           </ul>
         </div>
