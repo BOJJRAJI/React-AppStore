@@ -1,20 +1,15 @@
-import './index.css'
-
 const TabItem = props => {
-  const {tabDetails, getActiveTabId, isActive} = props
-  const {displayText, tabId} = tabDetails
+  const {tabDetails, changeTab, isActive} = props
+  const {tabId, displayText} = tabDetails
 
-  const activeTab = isActive ? 'active-tab' : null
+  const buttonClass = isActive ? 'active-tab' : 'normal-tab'
 
-  function changeTab() {
-    getActiveTabId(tabId)
-  }
   return (
-    <li className="tab">
+    <li className="tab-list">
       <button
+        className={buttonClass}
         type="button"
-        className={`button ${activeTab}`}
-        onClick={changeTab}
+        onClick={() => changeTab(tabId)}
       >
         {displayText}
       </button>
